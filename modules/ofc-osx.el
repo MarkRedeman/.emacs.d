@@ -7,6 +7,10 @@
 ;; Let the right Alt be used for special characters.
 (setq mac-right-option-modifier 'none)
 
+;; Prevent the mouse from being oversensitive and accelerating the
+;; text out of the visible region.
+(setq mouse-wheel-progressive-speed nil)
+
 (setq use-dialog-box nil)
 
 ;; Initialise the environment

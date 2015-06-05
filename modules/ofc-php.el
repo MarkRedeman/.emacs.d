@@ -1,7 +1,7 @@
 (require 'php-mode)
 (require 'php-extras)
 (require 'ofc-comint-php)
-(require 'ofc-edep)
+;; (require 'ofc-edep)
 
 (defun ofc/php-mode-hook ()
   "A custom PHP mode initialisation hook."

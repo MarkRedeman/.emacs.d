@@ -3,7 +3,7 @@
 # key: class
 # expand-env: ((yas-indent-line 'fixed) (yas-wrap-around-region 't))
 # --
-class $1
+class ${1:`(car (split-string (buffer-name) "\\.php"))`}
 {
     $0
 }
