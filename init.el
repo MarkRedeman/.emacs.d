@@ -10,10 +10,6 @@
 ;; You'll notice that some of the structure of this
 ;; project is clumsily copied from the great Emacs
 ;; Prelude package.
-
-(load-file "~/.emacs.d/elisp/cedet/cedet-devel-load.el")
-;;(load-file "~/Dev/steve-cedet/cedet-devel-load.el")
-
 (defvar ofc-dir (file-name-directory load-file-name)
   "The Emacs configuration directory, generally this is `~/.emacs/d'.")
 
@@ -55,6 +51,10 @@ our changed Emacs paramaters.")
 (scroll-bar-mode -1)
 (blink-cursor-mode -1)
 (load-theme 'warm-night t)
+
+;; Loading CEDET 2.0 is a slow process even when it's bytecompiled.
+;; I've moved this here to avoid the annoying flash of unstyled window.
+(load-file (concat ofc-elisp-dir "/cedet/cedet-devel-load.el"))
 
 (add-to-list 'load-path ofc-modules-dir)
 (add-to-list 'load-path ofc-personal-dir)
@@ -98,22 +98,21 @@ our changed Emacs paramaters.")
 ;;
 ;; TODO Move the important bits and bobs of its configuration
 ;; from the custom file into ofc-ecb.el.
+;;
+;; NOTE The order of the following requires is relevant.
 (require 'ofc-projectile)
 (require 'ofc-helm)
 (require 'ofc-ecb)
-
 (require 'ofc-yasnippet)
 (require 'ofc-recentf)
 (require 'ofc-company)
 (require 'ofc-magit)
-
 (require 'ofc-tags)
-
 (require 'ofc-coffee)
 (require 'ofc-sql)
 (require 'ofc-php)
 (require 'ofc-web)
 (require 'ofc-org)
 
-;; Load Emacs customisations.
+;; Load Emacs customisations changed with `customize'.
 (load custom-file)
