@@ -153,8 +153,6 @@ done starting up."
       backup-directory-alist `((".*" . ,temporary-file-directory))
       auto-save-file-name-transforms `((".*" ,temporary-file-directory t)))
 
-(setq-default cursor-type 'box)
-
 (setq inhibit-startup-message t
       initial-scratch-message nil
       truncate-lines t
@@ -162,6 +160,9 @@ done starting up."
 
       ;; Use the X11 clipboard
       x-select-enable-clipboard t
+
+      ;; Don't create new frames when using C-x 4 or helm
+      popup-new-frames nil
 
       ;; Smooth scrolling settings
       scroll-step 1
@@ -186,6 +187,18 @@ done starting up."
 ;; SEE M-x customize-group desktop-save
 ;; SEE www.gnu.org/software/emacs/manual/html_node/emacs/Saving-Emacs-Sessions.html
 (desktop-save-mode 0)
+
+;; Don't move the point when scrolling about
+(scroll-lock-mode)
+
+;; Set the cursor to a bar
+(setq-default cursor-type 'box)
+
+;; Blink transitions
+(setq blink-cursor-alist '((bar . hollow) (box . hollow)))
+
+;; Number of blinks after each movement.
+(setq blink-cursor-blinks 2)
 
 (setq uniquify-buffer-name-style 'forward
       uniquify-separator "/"
