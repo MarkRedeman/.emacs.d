@@ -11,7 +11,9 @@
 (defun ofc/searching-p nil
   "A predicate used to test the presence of buffers in the
 `ofc-buffer-history'."
-  (if ofc-buffer-history
+  (when (not (featurep 'helm-etags+))
+    (error "ofc tag search requires helm and helm-etags+"))
+  (if ofc-tags-search-buffers
       t
     nil))
 
@@ -22,7 +24,7 @@ point."
   (condition-case error-message
       (let ((initial-buffer (current-buffer)))
         (helm-etags+-select)
-        (push initial-buffer ofc-buffer-history))
+        (push initial-buffer ofc-tags-search-buffers))
     (error error-message)))
 
 (defun ofc/tags-stop-search ()
@@ -34,7 +36,7 @@ M-* to clear the killed buffers in the history."
   (interactive)
   (if (ofc/searching-p)
       (condition-case error-message
-          (switch-to-buffer (pop ofc-buffer-history))
+          (switch-to-buffer (pop ofc-tags-search-buffers))
         (error (message "A visited definition file was killed.")))
     (message "No tag search in progress.")))
 
