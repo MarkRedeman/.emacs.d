@@ -144,6 +144,10 @@ done starting up."
 
 (put 'dired-find-alternate-file 'disabled nil)
 
+
+;; Don't create new frames when using C-x 4 or helm
+(setq-default pop-up-frames nil)
+
 ;; Save point position between sessions
 (setq-default save-place t)
 (setq save-place-file ofc-savefile-dir)
@@ -160,9 +164,6 @@ done starting up."
 
       ;; Use the X11 clipboard
       x-select-enable-clipboard t
-
-      ;; Don't create new frames when using C-x 4 or helm
-      popup-new-frames nil
 
       ;; Smooth scrolling settings
       scroll-step 1

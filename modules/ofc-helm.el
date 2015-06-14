@@ -1,8 +1,8 @@
 (require 'helm-config)
 
 ;; Apparently `helm-M-x' hangs...
-;;(global-set-key (kbd "M-x") 'helm-M-x)
-(global-set-key (kbd "M-x") 'execute-extended-command)
+(global-set-key (kbd "M-x") 'helm-M-x)
+;; (global-set-key (kbd "M-x") 'execute-extended-command)
 (global-set-key (kbd "C-M-y") 'helm-show-kill-ring)
 (global-set-key (kbd "C-x f") 'helm-recentf)
 (global-set-key (kbd "C-x b") 'helm-mini)

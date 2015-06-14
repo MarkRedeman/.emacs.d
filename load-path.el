@@ -15,6 +15,7 @@
                  (mapcar 'expand-file-name
                          (list "~/.emacs.d/elisp/web-mode"
                                "~/.emacs.d/elisp/edep"
+                               "~/.emacs.d/elisp/ede-php-autoload"
                                "~/.emacs.d/elisp/php-mode"
                                "~/.emacs.d/elisp/php-extras"
                                "~/.emacs.d/elisp/php-eldoc"

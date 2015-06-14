@@ -17,13 +17,13 @@
       t
     nil))
 
-(defun ofc/tags-find-at-point ()
+(defun ofc/tags-find-at-point (arg)
   "Use some library to find the definition of the symbol at
 point."
-  (interactive)
+  (interactive "P")
   (condition-case error-message
       (let ((initial-buffer (current-buffer)))
-        (helm-etags+-select)
+        (helm-etags-select arg)
         (push initial-buffer ofc-tags-search-buffers))
     (error error-message)))
 
