@@ -54,7 +54,7 @@ our changed Emacs paramaters.")
 
 ;; Loading CEDET 2.0 is a slow process even when it's bytecompiled.
 ;; I've moved this here to avoid the annoying flash of unstyled window.
-(load-file (concat ofc-elisp-dir "/cedet/cedet-devel-load.el"))
+;;(load-file (concat ofc-elisp-dir "/cedet/cedet-devel-load.el"))
 
 (add-to-list 'load-path ofc-modules-dir)
 (add-to-list 'load-path ofc-personal-dir)
