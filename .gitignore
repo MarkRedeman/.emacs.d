@@ -15,3 +15,6 @@ projectile-bookmarks.eld
 recentf
 /srecode-map.el
 semanticdb
+/.DS_Store
+/ede-projects.el
+/image-dired/
