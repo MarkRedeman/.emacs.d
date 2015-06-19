@@ -208,6 +208,8 @@ done starting up."
       ;; don't muck with special buffers
       uniquify-ignore-buffers-re "^\\*")
 
+(setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
+
 ;; Do not underline current line
 (set-face-attribute hl-line-face nil :underline nil)
 

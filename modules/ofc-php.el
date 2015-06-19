@@ -25,6 +25,8 @@
 ;; helm-etags-plus package.
 (add-hook 'php-mode-hook 'ctags-auto-update-mode)
 
+(define-key php-mode-map (kbd "M-n") 'company-complete)
+
 ;; Use php-mode to visiting .php files.
 (push '("\\.php" . php-mode) auto-mode-alist)
 
