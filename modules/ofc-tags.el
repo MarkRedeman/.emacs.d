@@ -5,8 +5,7 @@
 (setq tags-revert-without-query t)
 
 (defun ofc/tags-find-at-point ()
-  "Use some library to find the definition of the symbol at
-point."
+  "Finds the definitions of the symbol at poing using a tag file."
   (interactive)
   (xref-find-definitions (thing-at-point 'sexp)))
 

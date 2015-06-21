@@ -1,6 +1,9 @@
 (require 'ansi-color)
 (require 'uniquify)
 (require 'whitespace)
+(require 'ace-window)
+
+(global-set-key (kbd "M-p") 'ace-window)
 
 (defun ofc/popup-buffer (buffer &optional action norecord)
   "Create a new window at the bottom of the frame and displays
@@ -172,6 +175,14 @@ done starting up."
       scroll-conservatively 10
       scroll-preserve-screen-position 1
       mouse-wheel-scroll-amount '(0.01))
+
+;; Based on code from Oleg Pavliv
+;; Source http://stackoverflow.com/questions/13095405/isearch-region-if-active-emacs
+(defun ofc/isearch-yank-region ()
+  (interactive)
+  (if (use-region-p)
+      (isearch-yank-internal (lambda () (mark)))
+    ())) ; default isearch behaviour?
 
 ;; Answer just y/n insted of yes or no
 (fset 'yes-or-no-p 'y-or-n-p)

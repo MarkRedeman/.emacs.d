@@ -1,5 +1,5 @@
 ;;; Emacs Key Bindings
-(require 'ace-window)
+
 
 ;; Avoid accidentally suspending Emacs.
 (global-unset-key (kbd "C-z"))
@@ -12,5 +12,3 @@
 
 ;; Treat ESC just like C-g.
 (global-set-key (kbd "<escape>") 'keyboard-quit)
-
-(global-set-key (kbd "M-p") 'ace-window)
