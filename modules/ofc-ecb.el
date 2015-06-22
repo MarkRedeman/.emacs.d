@@ -62,4 +62,9 @@
                                   (ecb-compilation-buffer-p compwin-buffer)))
                         (ecb-toggle-compile-window -1)))))
 
+(eval-after-load 'ace-window (lambda ()
+                              (add-to-list 'aw-ignored-buffers ecb-methods-buffer-name)
+                              (add-to-list 'aw-ignored-buffers ecb-directories-buffer-name)
+                              (add-to-list 'aw-ignored-buffers ecb-sources-buffer-name)))
+
 (provide 'ofc-ecb)

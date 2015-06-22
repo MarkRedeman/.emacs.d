@@ -220,6 +220,7 @@ done starting up."
       uniquify-ignore-buffers-re "^\\*")
 
 (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
+(setq aw-dispatch-always t)
 
 ;; Do not underline current line
 (set-face-attribute hl-line-face nil :underline nil)
