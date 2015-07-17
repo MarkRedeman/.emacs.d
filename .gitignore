@@ -18,3 +18,4 @@ semanticdb
 /.DS_Store
 /ede-projects.el
 /image-dired/
+/.mc-lists.el
