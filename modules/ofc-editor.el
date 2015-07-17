@@ -95,25 +95,6 @@ done starting up."
     (bookmark-bmenu-list)
     (switch-to-buffer "*Bookmark List*"))
 
-;; Show the initial screen with my bookmarks.
-(add-hook 'after-init-hook 'ofc/startup-hook)
-(add-hook 'before-save-hook 'ofc/before-save-hook)
-
-;; Bind M-g to temporarily display line numbers when jumping to a
-;; line.
-(global-set-key (kbd "M-g") 'ofc/goto-line-with-feedback)
-
-;; Bind C-/ to the comment line or region function which does pretty
-;; much what it says on the tin.
-(global-set-key (kbd "C-w") 'ofc/kill-region)
-(global-set-key (kbd "C-/") 'ofc/comment-or-uncomment-line-or-region)
-
-;; Bind C-x a r to align the text in the region.
-(global-set-key (kbd "C-x a r") 'align-regexp)
-
-;; Join two consecutive lines into one.
-(global-set-key (kbd "M-^") 'ofc/join-lines)
-
 ;; Don't kill Emacs without confirmation.
 (setq confirm-kill-emacs 'y-or-n-p)
 
@@ -224,5 +205,24 @@ done starting up."
 
 ;; Do not underline current line
 (set-face-attribute hl-line-face nil :underline nil)
+
+;; Show the initial screen with my bookmarks.
+(add-hook 'after-init-hook 'ofc/startup-hook)
+(add-hook 'before-save-hook 'ofc/before-save-hook)
+
+;; Bind M-g to temporarily display line numbers when jumping to a
+;; line.
+(global-set-key (kbd "M-g") 'ofc/goto-line-with-feedback)
+
+;; Bind C-/ to the comment line or region function which does pretty
+;; much what it says on the tin.
+(global-set-key (kbd "C-w") 'ofc/kill-region)
+(global-set-key (kbd "C-/") 'ofc/comment-or-uncomment-line-or-region)
+
+;; Bind C-x a r to align the text in the region.
+(global-set-key (kbd "C-x a r") 'align-regexp)
+
+;; Join two consecutive lines into one.
+(global-set-key (kbd "M-^") 'ofc/join-lines)
 
 (provide 'ofc-editor)
