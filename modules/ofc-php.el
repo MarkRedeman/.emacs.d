@@ -1,12 +1,14 @@
 (require 'php-mode)
 (require 'php-extras)
-(require 'ofc-comint-php)
 (require 'ofc-php-tags)
+(require 'ofc-php-comint)
+(require 'ofc-php-flymake)
 
 (defun ofc/php-mode-hook ()
   "A custom PHP mode initialisation hook."
   (setq mode-name "PHP"
         php-lineup-cascaded-calls t)
+  (flymake-mode 1)
   (set (make-local-variable 'require-final-newline) t))
 
 (defun ofc/forward-word ()
@@ -53,6 +55,7 @@
 (define-key php-mode-map (kbd "M-n") 'company-complete)
 
 ;; Jump sexps (Blocks of braces in PHP .e.g { ... }) using M-f and M-b
+;; TODO update ofc/forward/backward-word to fallback in strings.
 (define-key php-mode-map (kbd "M-f") 'ofc/forward-word)
 (define-key php-mode-map (kbd "M-b") 'ofc/backward-word)
 

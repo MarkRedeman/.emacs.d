@@ -8,7 +8,7 @@
 (setq comint-prompt-read-only t)
 (setq php-cli-arguments '())
 
-(defun run-php ()
+(defun ofc/php-comint ()
   "Run an inferior instance of `php' inside Emacs."
   (interactive)
   (let ((php-program php-cli-path)
@@ -20,10 +20,6 @@
       (apply 'make-comint-in-buffer "php" "*php-repl*" php-program nil php-switches))
     (pop-to-buffer "*php-repl*")))
 
-(defun ofc/php-mode-comint-hook ()
-  ""
-  (local-set-key (kbd "C-x C-r") 'run-php))
+(define-key php-mode-map (kbd "C-x C-r") 'ofc/php-comint)
 
-(add-hook 'php-mode-hook 'ofc/php-mode-comint-hook)
-
-(provide 'ofc-comint-php)
+(provide 'ofc-php-comint)
