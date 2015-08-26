@@ -13,6 +13,9 @@
 
 (setq use-dialog-box nil)
 
+;; Fixes
+(eval-after-load 'ecb '(setq-default ecb-primary-secondary-mouse-buttons (quote mouse-1--C-mouse-1)))
+
 ;; Initialise the environment
 (exec-path-from-shell-initialize)
 

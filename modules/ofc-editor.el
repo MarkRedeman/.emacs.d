@@ -225,4 +225,6 @@ done starting up."
 ;; Join two consecutive lines into one.
 (global-set-key (kbd "M-^") 'ofc/join-lines)
 
+(push '("\\.env\\|\\.env.dist" . conf-mode) auto-mode-alist)
+
 (provide 'ofc-editor)

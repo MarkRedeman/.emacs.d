@@ -3,8 +3,8 @@
 ;; Create a sequence of 3 ECB layouts. The default layout is
 ;; doesn't have to be one from the sequence.
 
-(setq ecb-layout-name "left15")
-(setq ecb-toggle-layout-sequence (list "left13" "left15"))
+(setq ecb-layout-name "left9")
+(setq ecb-toggle-layout-sequence (list "left13" "left9"))
 
 ;; Disable the Tip of the Day popup.
 (setq ecb-tip-of-the-day nil)
