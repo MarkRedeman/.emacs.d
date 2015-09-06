@@ -13,10 +13,16 @@
 ;; Configure ECB to split the frame, instead of the edit window,
 ;; to make real estate when displaying the compilation window.
 (setq ecb-compile-window-width 'frame)
-(setq ecb-compile-window-height 11)
+(setq ecb-compile-window-height 10)
 
 ;; Show files in the directory tree buffer.
 (setq ecb-show-sources-in-directories-buffer 'always)
+
+;; Prevent regular buffers from being opened in the compile window.
+(setq ecb-other-window-behavior 'only-edit)
+
+;; Declare this variable to allow ecb-home/ecb to activate correctly.
+(defvar stack-trace-on-error t)
 
 ;; Activate ECB as soon as Emacs is started.
 (add-hook 'after-init-hook 'ecb-activate)
@@ -29,7 +35,6 @@
 (global-set-key (kbd "s-c") 'ecb-goto-window-compilation)
 (global-set-key (kbd "s-d") 'ecb-goto-window-directories)
 (global-set-key (kbd "s-e") 'ecb-goto-window-edit-last)
-(global-set-key (kbd "s-<return>") 'ecb-toggle-layout)
 
 ;; Helm is configured to be shown in the compilation window.
 ;; This appears to be causing random crashes after Emacs has
@@ -52,19 +57,18 @@
                                      ("*helm*")
                                      ("\\*helm[- ].+\\*" . t))))
 
-(add-hook 'ecb-activate-hook (lambda ()
-  (cancel-function-timers 'ecb-stealthy-updates)))
-
 (add-hook 'ecb-activate-hook
-                  (lambda ()
-                    (let ((compwin-buffer (ecb-get-compile-window-buffer)))
-                    (if (not (and compwin-buffer
-                                  (ecb-compilation-buffer-p compwin-buffer)))
-                        (ecb-toggle-compile-window -1)))))
+          (lambda ()
+            (cancel-function-timers 'ecb-stealthy-updates)
+            (let ((compwin-buffer (ecb-get-compile-window-buffer)))
+              (if (not (and compwin-buffer
+                            (ecb-compilation-buffer-p compwin-buffer)))
+                  (ecb-toggle-compile-window -1)))))
 
-(eval-after-load 'ace-window (lambda ()
-                              (add-to-list 'aw-ignored-buffers ecb-methods-buffer-name)
-                              (add-to-list 'aw-ignored-buffers ecb-directories-buffer-name)
-                              (add-to-list 'aw-ignored-buffers ecb-sources-buffer-name)))
+(eval-after-load 'ace-window
+  (lambda ()
+    (add-to-list 'aw-ignored-buffers ecb-methods-buffer-name)
+    (add-to-list 'aw-ignored-buffers ecb-directories-buffer-name)
+    (add-to-list 'aw-ignored-buffers ecb-sources-buffer-name)))
 
 (provide 'ofc-ecb)

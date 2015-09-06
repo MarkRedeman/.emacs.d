@@ -2,6 +2,8 @@
 (require 'php-mode)
 (require 'ede-php-autoload-mode)
 
+(require 'grammar-setup)
+
 (global-ede-mode 1)
 
 (add-hook 'php-mode-hook #'ede-php-autoload-mode)
