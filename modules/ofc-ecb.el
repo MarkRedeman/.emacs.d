@@ -1,19 +1,8 @@
 (require 'ecb)
 
-;; Create a sequence of 3 ECB layouts. The default layout is
-;; doesn't have to be one from the sequence.
-
-(setq ecb-layout-name "left9")
-(setq ecb-toggle-layout-sequence (list "left13" "left9"))
-
 ;; Disable the Tip of the Day popup.
 (setq ecb-tip-of-the-day nil)
 (setq ecb-tree-make-parent-node-sticky nil)
-
-;; Configure ECB to split the frame, instead of the edit window,
-;; to make real estate when displaying the compilation window.
-(setq ecb-compile-window-width 'frame)
-(setq ecb-compile-window-height 10)
 
 ;; Show files in the directory tree buffer.
 (setq ecb-show-sources-in-directories-buffer 'always)
@@ -29,6 +18,7 @@
 
 ;; Hit ESC to toggle the compile window.
 (global-set-key (kbd "<escape>") 'ecb-toggle-compile-window)
+(global-set-key (kbd "s-h") 'ecb-toggle-ecb-windows)
 (global-set-key (kbd "s-m") 'ecb-goto-window-methods)
 (global-set-key (kbd "s-h") 'ecb-goto-window-history)
 (global-set-key (kbd "s-s") 'ecb-goto-window-sources)
@@ -70,5 +60,26 @@
     (add-to-list 'aw-ignored-buffers ecb-methods-buffer-name)
     (add-to-list 'aw-ignored-buffers ecb-directories-buffer-name)
     (add-to-list 'aw-ignored-buffers ecb-sources-buffer-name)))
+
+(customize-set-variable
+ 'ecb-compile-window-height
+ 10
+ "Maximum height of the compile window")
+
+(customize-set-variable
+ 'ecb-compile-window-width
+ 'frame
+ "Configure ECB to split the frame, instead of the edit window,to make real estate when displaying the compilation window.")
+
+(customize-set-variable
+ 'ecb-layout-name
+ "left9"
+ "Sidebar with full ECB methods buffer on the left hand side of the screen")
+
+(customize-set-variable
+ 'ecb-toggle-layout-sequence
+ (list "left13" "left9")
+ "Create a sequence of 3 ECB layouts. The default layout is
+doesn't have to be one from the sequence.")
 
 (provide 'ofc-ecb)

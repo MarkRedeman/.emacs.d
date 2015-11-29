@@ -1,8 +1,8 @@
 (require 'ofc-tags)
 (require 'php-mode)
 (require 'ede-php-autoload-mode)
-
 (require 'grammar-setup)
+;; (load "~/Dev/joris-semantic-php/loaddefs.el")
 
 (global-ede-mode 1)
 

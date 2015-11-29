@@ -5,6 +5,17 @@
 
 (global-set-key (kbd "M-p") 'ace-window)
 
+(defun ofc-rename-buffer-file (new-file)
+  "Renames the file associated with this buffer"
+  (interactive "FNew buffer name: ")
+  (let ((current-file (buffer-file-name))
+        (current-buffer (current-buffer))
+        (new-buffer (car (last (split-string new-file "/")))))
+    (when current-file
+      (write-file new-file)
+      (delete-file current-file)
+      (rename-buffer new-buffer))))
+
 (defun ofc/popup-buffer (buffer &optional action norecord)
   "Create a new window at the bottom of the frame and displays
 BUFFER in it."

@@ -9,13 +9,14 @@
 ;;; - Added git-timemachine.
 (add-to-list 'custom-theme-load-path "~/.emacs.d/elisp/warm-night-theme")
 
-(mapcar 'expand-file-name '("~/JustPark" "~/"))
+(mapcar 'expand-file-name '("~/"))
 
 (setq load-path (append
                  (mapcar 'expand-file-name
                          (list "~/.emacs.d/elisp/web-mode"
                                "~/.emacs.d/elisp/edep"
-                               "~/Dev/semantic-php"
+                               "~/Dev/my-semantic-php"
+                               ;; "~/Dev/joris-semantic-php"
                                "~/.emacs.d/elisp/ede-php-autoload"
                                "~/.emacs.d/elisp/php-mode"
                                "~/.emacs.d/elisp/php-eldoc"

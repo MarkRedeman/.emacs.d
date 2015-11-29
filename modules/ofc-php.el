@@ -8,14 +8,31 @@
         php-lineup-cascaded-calls t)
   (set (make-local-variable 'require-final-newline) t))
 
+(defun ofc/in-comment-or-string-p (point)
+  "Returns t when the point is placed within a string or comment"
+  (interactive)
+  ;; Body of this defun was taken from Chen Bin's answer to
+  ;; emacs.stackexchange.com/questions/14269
+  (let ((fontfaces (get-text-property point 'face)))
+    (when (not (listp fontfaces))
+      (setf fontfaces (list fontfaces)))
+    (delq nil
+          (mapcar #'(lambda (f)
+                      ;; learn this trick from flyspell
+                      (or (eq f 'font-lock-comment-face)
+                          (eq f 'font-lock-string-face)
+                          (eq f 'font-lock-comment-delimiter-face)))
+                  fontfaces))))
+
 (defun ofc/forward-word ()
   "Moves the point at the end of the next word or sexp."
   (interactive)
-
-  (cond ((looking-at "{")
+  (cond ((and (looking-at "{")
+              (not (ofc/in-comment-or-string-p (point))))
          (forward-sexp))
 
-        ((looking-back "{")
+        ((and (looking-back "{")
+              (not (ofc/in-comment-or-string-p (point))))
          (backward-char 1)
          (forward-sexp))
 
@@ -25,10 +42,12 @@
   "Moves the point at the beginning of the previous word or sexp."
   (interactive)
 
-  (cond ((looking-back "}")
+  (cond ((and (looking-back "}")
+              (not (ofc/in-comment-or-string-p (point))))
          (backward-sexp))
 
-        ((looking-at "}")
+        ((and (looking-at "}")
+              (not (ofc/in-comment-or-string-p (point))))
          (forward-char 1)
          (backward-sexp))
 
