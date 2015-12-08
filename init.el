@@ -50,7 +50,7 @@ our changed Emacs paramaters.")
 (auto-save-mode -1)
 (scroll-bar-mode -1)
 (blink-cursor-mode -1)
-(load-theme 'warm-night t)
+(load-theme 'gotham t)
 
 ;; Loading CEDET 2.0 is a slow process even when it's bytecompiled.
 ;; I've moved this here to avoid the annoying flash of unstyled window.
@@ -105,6 +105,7 @@ our changed Emacs paramaters.")
 (require 'ofc-ecb)
 (require 'ofc-yasnippet)
 (require 'ofc-recentf)
+;; (require 'ofc-auto-complete)
 (require 'ofc-company)
 (require 'ofc-magit)
 (require 'ofc-tags)

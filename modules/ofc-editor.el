@@ -148,8 +148,9 @@ done starting up."
 (setq save-place-file ofc-savefile-dir)
 
 ;; Controls where autosave files are stored.
-(setq auto-save-list-file-prefix (concat ofc-savefile-dir "/")
-      backup-directory-alist `((".*" . ,temporary-file-directory))
+(customize-set-variable 'auto-save-list-file-prefix (concat ofc-savefile-dir "/autosave.") t)
+
+(setq backup-directory-alist `((".*" . ,temporary-file-directory))
       auto-save-file-name-transforms `((".*" ,temporary-file-directory t)))
 
 (setq inhibit-startup-message t

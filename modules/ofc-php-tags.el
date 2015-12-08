@@ -7,6 +7,7 @@
 (global-ede-mode 1)
 
 (add-hook 'php-mode-hook #'ede-php-autoload-mode)
+(add-to-list 'company-semantic-modes 'php-mode)
 
 (defun ofc/visit-class-file-at-point ()
   "Maps a FQN into a file name using PHP autoload resolution."
