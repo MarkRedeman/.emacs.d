@@ -50,14 +50,19 @@ our changed Emacs paramaters.")
 (auto-save-mode -1)
 (scroll-bar-mode -1)
 (blink-cursor-mode -1)
-(load-theme 'gotham t)
+(load-theme 'warm-night t)
 
 ;; Loading CEDET 2.0 is a slow process even when it's bytecompiled.
 ;; I've moved this here to avoid the annoying flash of unstyled window.
 ;; (load-file (concat ofc-elisp-dir "/cedet/cedet-devel-load.el"))
 
 (add-to-list 'load-path ofc-modules-dir)
-(add-to-list 'load-path ofc-personal-dir)
+
+;; Load user-specific settings.
+(when (and (file-exists-p ofc-personal-dir)
+	   (file-exists-p (concat ofc-personal-dir "/ofc-personal.el")))
+  (add-to-list 'load-path ofc-personal-dir)
+  (require 'ofc-personal))
 
 ;; Prevent customisations from changing this file.  All changes made
 ;; with Emacs `customize' will be written to the specified.
@@ -66,6 +71,9 @@ our changed Emacs paramaters.")
 
 ;; Save Emacs file bookmarks to a different file.
 (setq bookmark-default-file (expand-file-name "bookmarks" ofc-savefile-dir))
+
+;; Don't warn me about redefined de/activated advices.
+(setq ad-redefinition-action 'accept)
 
 ;; Emacs complains if the customisation file is not present on
 ;; startup. We create create an empty file to avoid this.
@@ -82,9 +90,6 @@ our changed Emacs paramaters.")
 ;; when running Emacs on a Mac.
 (when (eq system-type 'darwin)
   (require 'ofc-osx))
-
-;; Load user-specific settings.
-(require 'ofc-personal)
 
 ;; Diminish all vanilla emacs minor modes.  The rest of the
 ;; minor-modes can be diminished individually in their own
@@ -105,7 +110,6 @@ our changed Emacs paramaters.")
 (require 'ofc-ecb)
 (require 'ofc-yasnippet)
 (require 'ofc-recentf)
-;; (require 'ofc-auto-complete)
 (require 'ofc-company)
 (require 'ofc-magit)
 (require 'ofc-tags)

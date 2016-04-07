@@ -7,7 +7,11 @@
 ;;; 2014-11-06
 ;;; - Created the load-path file to hold all paths configuration.
 ;;; - Added git-timemachine.
+(add-to-list 'custom-theme-load-path "~/.emacs.d/elisp/warm-night-theme")
 (add-to-list 'custom-theme-load-path "~/.emacs.d/elisp/gotham-theme")
+(add-to-list 'custom-theme-load-path "~/.emacs.d/elisp/eink-emacs")
+(add-to-list 'custom-theme-load-path "~/.emacs.d/elisp/emacs-leuven-theme")
+
 
 (mapcar 'expand-file-name '("~/"))
 
@@ -16,7 +20,6 @@
                          (list "~/.emacs.d/elisp/web-mode"
                                "~/.emacs.d/elisp/edep"
                                "~/Dev/my-semantic-php"
-                               ;; "~/Dev/joris-semantic-php"
                                "~/.emacs.d/elisp/ede-php-autoload"
                                "~/.emacs.d/elisp/php-mode"
                                "~/.emacs.d/elisp/php-eldoc"

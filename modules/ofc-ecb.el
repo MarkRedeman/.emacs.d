@@ -8,10 +8,10 @@
 (setq ecb-show-sources-in-directories-buffer 'always)
 
 ;; Prevent regular buffers from being opened in the compile window.
-(setq ecb-other-window-behavior 'only-edit)
+(setq ecb-other-window-behavior 'edit-and-compile)
 
 ;; Declare this variable to allow ecb-home/ecb to activate correctly.
-(defvar stack-trace-on-error t)
+(defvar stack-trace-on-error nil)
 
 ;; Activate ECB as soon as Emacs is started.
 (add-hook 'after-init-hook 'ecb-activate)

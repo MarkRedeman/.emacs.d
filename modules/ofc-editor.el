@@ -1,9 +1,6 @@
 (require 'ansi-color)
 (require 'uniquify)
 (require 'whitespace)
-(require 'ace-window)
-
-(global-set-key (kbd "M-p") 'ace-window)
 
 (defun ofc-rename-buffer-file (new-file)
   "Renames the file associated with this buffer"

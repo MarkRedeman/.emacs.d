@@ -1,6 +1,9 @@
 (require 'php-mode)
-(require 'ofc-php-tags)
 (require 'ofc-php-comint)
+(require 'ede-php-autoload-mode)
+
+;; Imports my experimental PHP language support.
+(require 'grammar-setup)
 
 (defun ofc/php-mode-hook ()
   "A custom PHP mode initialisation hook."
@@ -77,5 +80,17 @@
 
 ;; Use php-mode to visiting .php files.
 (push '("\\.php" . php-mode) auto-mode-alist)
+
+;; Enable Steven Remot's EDE customisations and type resolution based
+;; on Composer information.
+(add-hook 'php-mode-hook #'ede-php-autoload-mode)
+
+;; Make sure Company treats php-mode as a Semantic mode.
+(eval-after-load 'company-mode
+  (add-to-list 'company-semantic-modes 'php-mode))
+
+(global-ede-mode 1)
+
+(define-key php-mode-map (kbd "M-.") 'ofc/php-tags-find-at-point)
 
 (provide 'ofc-php)

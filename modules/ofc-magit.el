@@ -12,6 +12,4 @@
 (global-set-key (kbd "C-x g :") 'magit-git-command)
 (global-set-key (kbd "C-x g t") 'git-timemachine)
 
-(diminish 'magit-auto-revert-mode)
-
 (provide 'ofc-magit)
